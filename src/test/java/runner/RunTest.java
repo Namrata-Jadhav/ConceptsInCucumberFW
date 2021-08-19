@@ -7,7 +7,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
        features = "classpath:Features",
         glue="StepDefs",
-       // tags="@t",
+        tags="@Example",
         plugin={"pretty",
         "html:target/cucumber-reports.html"},
         dryRun= false

@@ -51,10 +51,25 @@ public class StepDefs {
         System.out.println(map.toString());
     }
 
-
     @Then("Something should happen")
     public void something_should_happen() {
 
     }
+
+
+    @Given("i am on the search page")
+    public void i_am_on_the_search_page() {
+
+    }
+    @When("I search for the product: {string}")
+    public void i_search_for_the_product_computer(String string) {
+        System.out.println("Product searched: "+string);
+    }
+    @Then("Search result should be displayed to {string}")
+    public void search_result_should_be_displayed_to(String string) {
+        System.out.println("Product search success: "+string);
+    }
+
+
 
 }

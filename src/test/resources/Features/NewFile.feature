@@ -15,3 +15,15 @@ Feature: Temp
       | Shraddha | 70 |
       | Namrata  | 72 |
     Then Something should happen
+
+  @Example
+  Scenario Outline: I want to search for products
+    Given i am on the search page
+    When I search for the product: "<Product>"
+    Then Search result should be displayed to "<Product>"
+    Examples:
+      | Product   |
+      | computer  |
+      | Mobile    |
+      | Laptops   |
+      | Earphones |
