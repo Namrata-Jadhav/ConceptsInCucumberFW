@@ -4,6 +4,9 @@ import io.cucumber.java.*;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -11,25 +14,30 @@ import org.openqa.selenium.WebDriver;
 import java.util.List;
 import java.util.Map;
 
+//@Log4j2
 public class StepDefs {
+    private static final Logger log = LogManager.getLogger(StepDefs.class);
 
     WebDriver driver;
     Scenario scenario;
 
     @Before
     public void setUp(Scenario scenario){
+
         this.scenario=scenario;
     }
     @After
     public void CleanUp() {
         if (!(driver == null)) {
             driver.quit();
+            log.debug("browser quited");
         }
     }
 
     @BeforeStep
     public void beforeEachStep(){
-       scenario.log("Executed before step");
+
+        scenario.log("Executed before step");
     }
     @AfterStep
     public void afterEachStep(){
@@ -47,6 +55,7 @@ public class StepDefs {
 
     @When("I have a arguments to send as")
     public void i_have_a_argument_to_send_as(String arg) {
+
         System.out.println("Arguments to be passed as: "+arg);
     }
 
@@ -60,6 +69,7 @@ public class StepDefs {
         //
         // For other transformations you can register a DataTableType.
         System.out.println(list.toString());
+        log.debug("list of students is displayed");
     }
 
     @When("I have a list of students and their marks to send as")
@@ -72,6 +82,7 @@ public class StepDefs {
         //
         // For other transformations you can register a DataTableType.
         System.out.println(map.toString());
+        log.debug("list of students and their marks is displayed");
     }
 
     @Then("Something should happen")
@@ -87,10 +98,12 @@ public class StepDefs {
     @When("I search for the product: {string}")
     public void i_search_for_the_product_computer(String string) {
         System.out.println("Product searched: "+string);
+        log.debug("product is searched: " +string);
     }
     @Then("Search result should be displayed to {string}")
     public void search_result_should_be_displayed_to(String string) {
         System.out.println("Product search success: "+string);
+        log.debug("product is searched: " +string);
     }
 
 
